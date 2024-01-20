@@ -26,7 +26,7 @@ class Notifications {
       badge: true,
       sound: true,
     );
-    const iosNotificationDetail = DarwinNotificationDetails(presentSound: true,sound: "assets/pop.mp3");
+    const iosNotificationDetail = DarwinNotificationDetails(presentSound: true,presentAlert: true);
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       flutterLocalNotificationsPlugin.show(
