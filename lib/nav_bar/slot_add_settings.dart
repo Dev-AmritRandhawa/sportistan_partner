@@ -1052,7 +1052,7 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                                 )),
                           )),
                     ),
-                    ValueListenableBuilder(valueListenable: loading, builder: (context, value, child) => value ? CircularProgressIndicator(strokeWidth: 1,) :
+                    ValueListenableBuilder(valueListenable: loading, builder: (context, value, child) => value ? const CircularProgressIndicator(strokeWidth: 1,) :
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CupertinoButton(

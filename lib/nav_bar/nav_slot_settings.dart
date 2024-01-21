@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -257,35 +259,7 @@ class _NavSlotSettingsState extends State<NavSlotSettings> {
               style:
                   const TextStyle(fontFamily: "DMSans", color: Colors.black54),
             )),
-        bottomNavigationBar: item.isNotEmpty
-            ? CupertinoButton(
-                borderRadius: const BorderRadius.all(Radius.zero),
-                color: Colors.green.shade800,
-                onPressed: () {
-                  if (formKey.currentState!.validate() &
-                      entireDayControllerKey2.currentState!.validate()) {
-                    ondDone();
-                  }
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const Icon(Icons.save),
-                    Text("Save Slots for ${widget.day}"),
-                  ],
-                ),
-              )
-            : CupertinoButton(
-                borderRadius: const BorderRadius.all(Radius.zero),
-                color: Colors.indigo,
-                onPressed: () {
-                  setState(() {
-                    item.addAll({0: newMethod(context, 0)});
-                  });
-                },
-                child: const Text("Add Slot",
-                    style: TextStyle(fontFamily: "DMSans")),
-              ),
+
         body: KeyboardActions(
     config: _buildConfig(context),
           child: ValueListenableBuilder(
@@ -349,15 +323,37 @@ class _NavSlotSettingsState extends State<NavSlotSettings> {
                                     itemBuilder: (context, index) {
                                       return item.values.elementAt(index);
                                     }),
-                                Row(
+                                item.isEmpty ? Padding(
+                                  padding: const EdgeInsets.all(25.0),
+                                  child: CupertinoButton(
+                                    color: Colors.green,
+                                    onPressed: () {
+                                      setState(() {
+                                        if (item.isNotEmpty) {
+                                          item.addAll({
+                                            item.keys.last + 1: newMethod(
+                                                context, item.keys.last + 1)
+                                          });
+                                        } else {
+                                          item.addAll(
+                                              {0: newMethod(context, 0)});
+                                        }
+                                      });
+                                    },
+                                    child: const Text('Add Slot + ',
+                                        style: TextStyle(
+                                            fontFamily: "DMSans",
+                                            color: Colors.white)),
+                                  ),
+                                ):  Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.only(right: 25,bottom: 25),
                                       child: MaterialButton(
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(20)),
+                                            BorderRadius.circular(20)),
                                         color: Colors.green,
                                         elevation: 0,
                                         onPressed: () {
@@ -381,6 +377,22 @@ class _NavSlotSettingsState extends State<NavSlotSettings> {
                                     ),
                                   ],
                                 ),
+                                item.isNotEmpty ? Container(
+                                  margin: Platform.isIOS
+                                      ? EdgeInsets.only(
+                                      bottom: MediaQuery.of(context).size.height / 50)
+                                      : const EdgeInsets.all(0.0),
+                                  child: CupertinoButton(
+                                    color: Colors.green.shade800,
+                                    onPressed: () {
+                                      if (formKey.currentState!.validate()) {
+                                        ondDone();
+                                      }
+                                    },
+                                    child: Text("Save Slots for ${widget.day}",style: const TextStyle(fontFamily: 'DMSans'),),
+                                  ),
+                                ) : Container(),
+                                SizedBox(height: MediaQuery.of(context).size.height/8,)
                               ],
                             ),
                           ),

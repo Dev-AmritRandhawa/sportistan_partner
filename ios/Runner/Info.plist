@@ -49,7 +49,7 @@
 		<true/>
 	</dict>
 	<key>NSContactsUsageDescription</key>
-	<string>instead of typing their number search using pick contact as admin</string>
+	<string>Instead of typing number pick and book a ground for users as ground owner</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs exact location to register sport ground by owners to get bookings &amp; easy direction for user to reach at correct spot.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

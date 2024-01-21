@@ -53,7 +53,7 @@ Future<void> main() async {
 
   await FirebaseAppCheck.instance.activate(
       androidProvider: AndroidProvider.playIntegrity,
-      appleProvider: AppleProvider.appAttest);
+      appleProvider: AppleProvider.deviceCheck);
   initializeDateFormatting('en', '').then((value) => null);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
