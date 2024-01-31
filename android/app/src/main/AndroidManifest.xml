@@ -58,7 +58,7 @@
             android:name="firebase_analytics_collection_enabled"
             android:value="false" />
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBeA3I5eNJkbzwRPc8cU1iDy50BrkcSPGM"/>
+            android:value="AIzaSyDH0xeHQZsZUTtdv2kukd0BOI8Quomkuqw"/>
 
         <meta-data android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_launcher" />
