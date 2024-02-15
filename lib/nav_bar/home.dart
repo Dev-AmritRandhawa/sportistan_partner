@@ -17,7 +17,6 @@ import 'package:sportistan_partners/nav_bar/booking_entireday_info.dart';
 import 'package:sportistan_partners/nav_bar/booking_info.dart';
 import 'package:sportistan_partners/nav_bar/nav_home.dart';
 import 'package:sportistan_partners/nav_bar/nav_slot_settings.dart';
-import 'package:sportistan_partners/utils/errors.dart';
 import 'package:sportistan_partners/utils/page_router.dart';
 
 class Home extends StatefulWidget {

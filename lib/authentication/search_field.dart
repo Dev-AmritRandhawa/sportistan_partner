@@ -281,7 +281,7 @@ class _SearchFieldState extends State<SearchField> with WidgetsBindingObserver {
                       "Hold & drag marker to change location",
                       style: TextStyle(
                         fontFamily: "Nunito",
-                        fontSize: MediaQuery.of(context).size.width / 25,
+                        fontSize: MediaQuery.of(context).size.width / 22,
                       ),
                     ),
                   ],
@@ -301,7 +301,7 @@ class _SearchFieldState extends State<SearchField> with WidgetsBindingObserver {
                                         fontWeight: FontWeight.bold,
                                         fontSize:
                                             MediaQuery.of(context).size.width /
-                                                30,
+                                                25,
                                         fontFamily: "Nunito"),
                                   ),
                                 )

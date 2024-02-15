@@ -1049,12 +1049,7 @@ class _BookASlotState extends State<BookASlot> {
     moveToReceipt(bookingID: bookingID);
   }
 
-  num calculateSlotPriceTeamA() {
-    if (checkBoxTeamB.value) {
-      return updatedPrice;
-    }
-    return updatedPrice / 2;
-  }
+
 
   moveToReceipt({required String bookingID}) async {
     if (Platform.isAndroid) {

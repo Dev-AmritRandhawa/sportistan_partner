@@ -12,7 +12,6 @@
 
     <application
         android:enableOnBackInvokedCallback="true"
-
         android:requestLegacyExternalStorage="true"
         android:label="Sportistan Partners"
         android:name="${applicationName}"
@@ -58,7 +57,7 @@
             android:name="firebase_analytics_collection_enabled"
             android:value="false" />
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDH0xeHQZsZUTtdv2kukd0BOI8Quomkuqw"/>
+            android:value="AIzaSyB3UX-i3zW0iDWnsaOLHDIN6CeE6IqTBEg"/>
 
         <meta-data android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_launcher" />

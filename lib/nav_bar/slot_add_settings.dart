@@ -7,7 +7,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:geoflutterfire_plus/geoflutterfire_plus.dart';
 import 'package:intl/intl.dart';
-import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:sportistan_partners/authentication/slot_setting.dart';
 import 'package:sportistan_partners/nav_bar/nav_home.dart';
 import 'package:sportistan_partners/utils/errors.dart';
@@ -51,6 +50,19 @@ class SlotAddSettingsState extends State<SlotAddSettings> {
 
   @override
   void dispose() {
+    for (var controller in nameTECs.values) {
+      controller.dispose();
+    }
+    for (var controller in nameTECs2.values) {
+      controller.dispose();
+    }
+    for (var controller in mailTECs.values) {
+      controller.dispose();
+    }
+    for (var controller in mailTECs2.values) {
+      controller.dispose();
+    }
+
     super.dispose();
   }
 
@@ -184,7 +196,6 @@ class SlotAddSettingsState extends State<SlotAddSettings> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              focusNode: _focusNode,
                 controller: mailController,
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -196,7 +207,7 @@ class SlotAddSettingsState extends State<SlotAddSettings> {
                   }
                 },
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                keyboardType: TextInputType.number,
+                keyboardType: const TextInputType.numberWithOptions(),
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.account_balance_wallet_outlined,
                       color: Colors.green),
@@ -239,30 +250,6 @@ class SlotAddSettingsState extends State<SlotAddSettings> {
     );
   }
 
-  final _focusNode = FocusNode();
-
-  KeyboardActionsConfig _buildConfig(BuildContext context) {
-    return KeyboardActionsConfig(
-      keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
-      keyboardBarColor: Colors.white,
-      nextFocus: true,
-      actions: [
-        KeyboardActionsItem(
-          focusNode: _focusNode,
-        ),
-        KeyboardActionsItem(focusNode: _focusNode, toolbarButtons: [
-          (node) {
-            return TextButton(
-                onPressed: () {
-                  node.unfocus();
-                },
-                child: const Text('Done',style: TextStyle(fontSize: 18),));
-          }
-        ])
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -275,9 +262,7 @@ class SlotAddSettingsState extends State<SlotAddSettings> {
               style:
                   const TextStyle(fontFamily: "DMSans", color: Colors.black54),
             )),
-        body: KeyboardActions(
-          config: _buildConfig(context),
-          child: ValueListenableBuilder(
+        body:  ValueListenableBuilder(
             valueListenable: listLoad,
             builder: (context, value, child) {
               return listLoad.value
@@ -377,7 +362,7 @@ class SlotAddSettingsState extends State<SlotAddSettings> {
                       ),
                     );
             },
-          ),
+
         ));
   }
 
@@ -711,110 +696,12 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
     super.dispose();
   }
 
-  final _focusNode = FocusNode();
-  final _focusNode2 = FocusNode();
-  final _focusNode3 = FocusNode();
-  final _focusNode4 = FocusNode();
-  final _focusNode5 = FocusNode();
-  final _focusNode6 = FocusNode();
-  final _focusNode7 = FocusNode();
-
-  KeyboardActionsConfig _buildConfig(BuildContext context) {
-    return KeyboardActionsConfig(
-      keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
-      keyboardBarColor: Colors.white,
-      nextFocus: true,
-      actions: [
-        KeyboardActionsItem(
-          focusNode: _focusNode,
-        ),
-        KeyboardActionsItem(focusNode: _focusNode, toolbarButtons: [
-              (node) {
-            return TextButton(
-                onPressed: () {
-                  node.unfocus();
-                },
-                child: const Text('Done',style: TextStyle(fontSize: 18),));
-          }
-        ])  ,  KeyboardActionsItem(
-          focusNode: _focusNode2,
-        ),
-        KeyboardActionsItem(focusNode: _focusNode2, toolbarButtons: [
-              (node) {
-            return TextButton(
-                onPressed: () {
-                  node.unfocus();
-                },
-                child: const Text('Done',style: TextStyle(fontSize: 18),));
-          }
-        ]),    KeyboardActionsItem(
-          focusNode: _focusNode3,
-        ),
-        KeyboardActionsItem(focusNode: _focusNode3, toolbarButtons: [
-              (node) {
-            return TextButton(
-                onPressed: () {
-                  node.unfocus();
-                },
-                child: const Text('Done',style: TextStyle(fontSize: 18),));
-          }
-        ]),    KeyboardActionsItem(
-          focusNode: _focusNode4,
-        ),
-        KeyboardActionsItem(focusNode: _focusNode4, toolbarButtons: [
-              (node) {
-            return TextButton(
-                onPressed: () {
-                  node.unfocus();
-                },
-                child: const Text('Done',style: TextStyle(fontSize: 18),));
-          }
-        ]),    KeyboardActionsItem(
-          focusNode: _focusNode5,
-        ),
-        KeyboardActionsItem(focusNode: _focusNode5, toolbarButtons: [
-              (node) {
-            return TextButton(
-                onPressed: () {
-                  node.unfocus();
-                },
-                child: const Text('Done',style: TextStyle(fontSize: 18),));
-          }
-        ]),    KeyboardActionsItem(
-          focusNode: _focusNode6,
-        ),
-        KeyboardActionsItem(focusNode: _focusNode6, toolbarButtons: [
-              (node) {
-            return TextButton(
-                onPressed: () {
-                  node.unfocus();
-                },
-                child: const Text('Done',style: TextStyle(fontSize: 18),));
-          }
-        ]),    KeyboardActionsItem(
-          focusNode: _focusNode7,
-        ),
-        KeyboardActionsItem(focusNode: _focusNode7, toolbarButtons: [
-              (node) {
-            return TextButton(
-                onPressed: () {
-                  node.unfocus();
-                },
-                child: const Text('Done',style: TextStyle(fontSize: 18),));
-          }
-        ]),
-      ],
-    );
-  }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        body: KeyboardActions(
-          config: _buildConfig(context),
-          child: SafeArea(
+        body:  SafeArea(
               child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: Column(children: [
@@ -837,7 +724,6 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                           child: Form(
                               key: mondayKey,
                               child: TextFormField(
-                                focusNode: _focusNode,
                                 controller: mondayController,
                                 validator: (value) {
                                   if (value!.isEmpty) {
@@ -846,7 +732,7 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                                     return null;
                                   }
                                 },
-                                keyboardType: TextInputType.number,
+                                keyboardType: const TextInputType.numberWithOptions(),
                                 inputFormatters: [
                                   FilteringTextInputFormatter.digitsOnly
                                 ],
@@ -883,7 +769,6 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                       child: Form(
                           key: tuesdayKey,
                           child: TextFormField(
-                            focusNode: _focusNode2,
 
                             controller: tuesdayController,
                             validator: (value) {
@@ -893,7 +778,7 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                                 return null;
                               }
                             },
-                            keyboardType: TextInputType.number,
+                            keyboardType: const TextInputType.numberWithOptions(),
                             inputFormatters: [
                               FilteringTextInputFormatter.digitsOnly
                             ],
@@ -912,7 +797,6 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                       child: Form(
                           key: wednesdayKey,
                           child: TextFormField(
-                            focusNode: _focusNode3,
 
                             controller: wednesdayController,
                             validator: (value) {
@@ -922,7 +806,7 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                                 return null;
                               }
                             },
-                            keyboardType: TextInputType.number,
+                            keyboardType: const TextInputType.numberWithOptions(),
                             inputFormatters: [
                               FilteringTextInputFormatter.digitsOnly
                             ],
@@ -941,7 +825,6 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                       child: Form(
                           key: thursdayKey,
                           child: TextFormField(
-                            focusNode: _focusNode4,
 
                             controller: thursdayController,
                             validator: (value) {
@@ -951,7 +834,7 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                                 return null;
                               }
                             },
-                            keyboardType: TextInputType.number,
+                            keyboardType: const TextInputType.numberWithOptions(),
                             inputFormatters: [
                               FilteringTextInputFormatter.digitsOnly
                             ],
@@ -970,8 +853,6 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                       child: Form(
                           key: fridayKey,
                           child: TextFormField(
-                            focusNode: _focusNode5,
-
                             controller: fridayController,
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -980,7 +861,7 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                                 return null;
                               }
                             },
-                            keyboardType: TextInputType.number,
+                            keyboardType: const TextInputType.numberWithOptions(),
                             inputFormatters: [
                               FilteringTextInputFormatter.digitsOnly
                             ],
@@ -999,7 +880,6 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                       child: Form(
                           key: saturdayKey,
                           child: TextFormField(
-                            focusNode: _focusNode6,
 
                             controller: saturdayController,
                             validator: (value) {
@@ -1009,7 +889,7 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                                 return null;
                               }
                             },
-                            keyboardType: TextInputType.number,
+                            keyboardType: const TextInputType.numberWithOptions(),
                             inputFormatters: [
                               FilteringTextInputFormatter.digitsOnly
                             ],
@@ -1028,7 +908,6 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                       child: Form(
                           key: sundayKey,
                           child: TextFormField(
-                            focusNode: _focusNode7,
 
                             controller: sundayController,
                             validator: (value) {
@@ -1038,7 +917,7 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                                 return null;
                               }
                             },
-                            keyboardType: TextInputType.number,
+                            keyboardType: const TextInputType.numberWithOptions(),
                             inputFormatters: [
                               FilteringTextInputFormatter.digitsOnly
                             ],
@@ -1098,6 +977,6 @@ ValueNotifier<bool> loading = ValueNotifier<bool>(false);
                           child: const Text("Finish Setup")),
                     ))
                   ]))),
-        ));
+        );
   }
 }
