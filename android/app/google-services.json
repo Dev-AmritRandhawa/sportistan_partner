@@ -22,14 +22,6 @@
           }
         },
         {
-          "client_id": "39436193342-jv7i2m19321bc91bmqgn3r9pcjgfaeen.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "co.in.sportistan.sportistan",
-            "certificate_hash": "708d93dbe0058599c5b023d7dfb62afebd24feae"
-          }
-        },
-        {
           "client_id": "39436193342-d26of4leo8tb9motlhcs7oilj54chkrs.apps.googleusercontent.com",
           "client_type": 3
         }
